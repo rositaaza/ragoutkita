@@ -1,0 +1,772 @@
+/* --- Definisi Variabel Warna --- */
+:root {
+    --color-primary-green: #6B8E23; /* Hijau Olive Drab untuk sidebar, header, aksen kuat */
+    --color-secondary-yellow: #F0E68C; /* Kuning Khaki untuk latar belakang bagian konten, navigasi */
+    --color-accent-gold: #DAA520; /* Kuning Goldenrod untuk tombol promo, highlight */
+    --color-light-cream: #FFFDD0; /* Kuning Cream untuk background wrapper / body */
+    --color-text-dark: #333333; /* Teks gelap */
+    --color-text-medium: #555555; /* Teks sedang */
+    --color-text-light: #F8F8F8; /* Teks terang (untuk kontras di background gelap) */
+    --color-border-light: #D3D3D3; /* Border abu-abu terang */
+    --color-card-background: #FDFCEE; /* Latar belakang kartu yang sedikit lebih cerah dari main bg */
+}
+
+/* --- Global & Base Styling --- */
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-dark);
+    background-color: var(--color-light-cream); /* Latar belakang body utama */
+    margin: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primary-green); /* Heading utama dengan warna hijau kuat */
+    line-height: 1.2;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Sidebar Styling --- */
+.sidebar {
+    background: var(--color-primary-green); /* Sidebar hijau dominan */
+    color: var(--color-text-light);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+    width: 250px;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 15px 15px 0;
+}
+
+.sidebar-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    object-fit: cover;
+}
+
+.logo-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--color-text-light);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.nav-item {
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+    border-left-color: var(--color-secondary-yellow); /* Border kuning saat hover */
+}
+
+.nav-link.active {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: 600;
+    border-left-color: var(--color-secondary-yellow); /* Border kuning saat aktif */
+}
+
+.nav-icon {
+    margin-right: 15px;
+    font-size: 1.4em;
+    width: 24px;
+    text-align: center;
+}
+
+/* --- Content Area Styling --- */
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: var(--color-secondary-yellow); /* Latar belakang konten kuning */
+}
+
+.content-header {
+    margin-bottom: 40px;
+    text-align: center;
+    background-color: var(--color-card-background); /* Header putih-krem */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+    font-size: 2.8em;
+    color: var(--color-primary-green);
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.page-section {
+    background-color: var(--color-card-background); /* Section background putih-krem */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+.section-title {
+    font-size: 2.2em;
+    color: var(--color-primary-green);
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-accent-gold); /* Garis bawah kuning emas */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* --- Dashboard Specific Styling --- */
+.intro-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro-text {
+    font-size: 1.1em;
+    color: var(--color-text-medium);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.intro-text strong {
+    color: var(--color-primary-green); /* Aksen warna pada teks penting */
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .wide-card {
+        grid-column: span 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+    .main-highlight {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .wide-card {
+        grid-column: span 1;
+    }
+    .small-card {
+        grid-column: span 1;
+    }
+}
+
+/* General Card Styling */
+.highlight-card, .info-card, .promo-card, .testimonial-card {
+    background-color: var(--color-card-background);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--color-border-light);
+}
+
+.highlight-card {
+    text-align: center;
+    background: linear-gradient(to bottom right, var(--color-card-background), #FBF7D4); /* Gradien subtle kuning */
+}
+
+.highlight-card h3 {
+    color: var(--color-primary-green);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.highlight-card p {
+    font-size: 1.1em;
+    color: var(--color-text-medium);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.product-image-dashboard {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-image-dashboard:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-btn, .btn-primary {
+    margin-top: 25px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    background-color: var(--color-accent-gold); /* Warna tombol utama kuning emas */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.highlight-btn:hover, .btn-primary:hover {
+    background-color: #C58B17; /* Lebih gelap saat hover */
+    transform: translateY(-2px);
+}
+
+/* Feature List (Why Choose Us) */
+.info-card h3 {
+    color: var(--color-primary-green);
+    margin-bottom: 25px;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    text-align: center;
+}
+
+.feature-item {
+    background-color: #F8FFEE; /* Latar belakang item fitur lebih terang */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-border-light);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item .feature-icon {
+    font-size: 3em;
+    color: var(--color-primary-green); /* Ikon fitur hijau */
+    margin-bottom: 15px;
+}
+
+.feature-item h4 {
+    font-size: 1.3em;
+    color: var(--color-text-dark);
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 0.95em;
+    color: var(--color-text-medium);
+    line-height: 1.4;
+}
+
+/* Promo Card Styling */
+.promo-card {
+    background: linear-gradient(to right, #B8860B, #FFD700); /* Gradien kuning keemasan */
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-card::before {
+    content: '🎉';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 6em;
+    opacity: 0.2;
+    transform: rotate(20deg);
+}
+.promo-card::after {
+    content: '💰';
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    font-size: 6em;
+    opacity: 0.2;
+    transform: rotate(-20deg);
+}
+
+.promo-card h3 {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.promo-card p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.promo-card .promo-code {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    display: inline-block;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.promo-card .btn-primary {
+    background-color: #ffffff;
+    color: var(--color-accent-gold); /* Warna tombol sesuai aksen gold */
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.promo-card .btn-primary:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Testimonial Card Styling */
+.testimonial-card {
+    background-color: #EEF8F0; /* Warna latar yang soft hijau */
+    border: 1px solid #E0F2E0;
+    text-align: center;
+}
+
+.testimonial-card h3 {
+    color: var(--color-primary-green);
+    margin-bottom: 20px;
+}
+
+.testimonial-quote {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: var(--color-text-medium);
+    padding: 10px;
+    border-left: 4px solid var(--color-accent-gold); /* Garis kuning emas */
+    background-color: #F8FDF0; /* Lebih terang */
+    border-radius: 5px;
+}
+
+.testimonial-quote p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.testimonial-quote .customer-name {
+    display: block;
+    font-weight: 600;
+    color: var(--color-primary-green); /* Nama pelanggan hijau */
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* --- Product Grid Styling --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.product-card {
+    background-color: var(--color-card-background);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--color-border-light);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.4em;
+    color: var(--color-primary-green);
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 0.95em;
+    color: var(--color-text-medium);
+    line-height: 1.4;
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--color-accent-gold); /* Harga produk kuning emas */
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+.btn-order-product {
+    background-color: var(--color-primary-green); /* Tombol order produk hijau */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-order-product:hover {
+    background-color: #5A7B1D; /* Lebih gelap saat hover */
+}
+
+/* --- Order Form Styling --- */
+.order-form {
+    background-color: var(--color-card-background);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid var(--color-border-light);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    font-size: 1.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group textarea,
+.form-group select {
+    width: calc(100% - 24px); /* Menyesuaikan dengan padding dan border */
+    padding: 12px;
+    border: 1px solid var(--color-border-light);
+    border-radius: 8px;
+    font-size: 1em;
+    color: var(--color-text-dark);
+    background-color: #FFFFFF;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group input[type="number"] {
+    width: 100px;
+}
+
+.btn-submit {
+    background-color: var(--color-primary-green); /* Tombol submit hijau */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: auto;
+    display: block;
+    margin: 25px auto 15px auto;
+}
+
+.btn-submit:hover {
+    background-color: #5A7B1D;
+    transform: translateY(-2px);
+}
+
+.form-info {
+    font-size: 0.9em;
+    color: var(--color-text-medium);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.inline-link {
+    color: var(--color-primary-green); /* Link inline hijau */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.inline-link:hover {
+    text-decoration: underline;
+}
+
+/* --- About Section Styling --- */
+.syariah-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--color-text-medium);
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #E6F3E6; /* Latar belakang hijau sangat muda */
+    border-left: 5px solid var(--color-primary-green);
+    border-radius: 8px;
+}
+
+#about ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#about li {
+    background-color: #F8FFEE; /* Latar belakang list item lebih terang */
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    border-left: 4px solid var(--color-accent-gold); /* Border kuning emas */
+    font-size: 1.05em;
+    color: var(--color-text-dark);
+}
+
+#about li strong {
+    color: var(--color-primary-green);
+}
+
+/* --- New Contact Section Styling --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.contact-item {
+    background-color: var(--color-card-background);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-border-light);
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    font-size: 3.5em;
+    color: var(--color-primary-green); /* Ikon kontak hijau */
+    margin-bottom: 15px;
+}
+
+.contact-item h3 {
+    font-size: 1.6em;
+    color: var(--color-primary-green);
+    margin-bottom: 10px;
+}
+
+.contact-item p {
+    font-size: 0.95em;
+    color: var(--color-text-medium);
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.btn-contact {
+    display: inline-block;
+    background-color: var(--color-accent-gold); /* Tombol kontak kuning emas */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 15px;
+}
+
+.btn-contact:hover {
+    background-color: #C58B17;
+    transform: translateY(-2px);
+}
+
+.contact-detail {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--color-text-dark);
+}
+
+.contact-note {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--color-text-medium);
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--color-border-light);
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 220px;
+        padding: 20px 0;
+    }
+    .nav-link {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    .page-title {
+        font-size: 2.2em;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 767px) {
+    .wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar-header {
+        margin-bottom: 20px;
+    }
+    .main-nav {
+        width: 100%;
+    }
+    .nav-list {
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+    }
+    .nav-item {
+        margin-bottom: 0;
+        flex: 1;
+    }
+    .nav-link {
+        justify-content: center;
+        padding: 10px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        flex-direction: column;
+        font-size: 0.9em;
+    }
+    .nav-link.active {
+        border-bottom-color: var(--color-secondary-yellow);
+    }
+    .nav-icon {
+        margin-right: 0;
+        margin-bottom: 5px;
+        display: block;
+    }
+    .content {
+        padding: 20px;
+    }
+    .content-header {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    .page-title {
+        font-size: 1.8em;
+    }
+    .section-title {
+        font-size: 1.6em;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .wide-card, .main-highlight, .small-card {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+    .product-grid, .contact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
